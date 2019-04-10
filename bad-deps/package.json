@@ -1,0 +1,10 @@
+{
+  "name": "happy-wrapped",
+  "dependencies": {
+    "grpc": "^1.19.0",
+    "@grpc/proto-loader": "^0.4.0"
+  },
+  "bin": {
+    "index": "index.js"
+  }
+}

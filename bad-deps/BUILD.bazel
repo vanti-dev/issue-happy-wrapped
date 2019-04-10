@@ -1,0 +1,20 @@
+package(default_visibility = ["//visibility:public"])
+
+exports_files(["package.json", "yarn.lock"])
+
+load("@com_happyco_rules_node//node:rules.bzl", "node_library", "node_binary")
+
+node_library(
+    name="bad-deps-lib",
+    srcs=["package.json"] + glob(["*.js"]),
+    deps=[
+        "@yarn_deps//grpc:node_module",
+        "@yarn_deps//__AT__grpc__SLASH__proto-loader:node_module",
+    ],
+)
+
+node_binary(
+    name="bad-deps",
+    script="index",
+    deps=[":bad-deps-lib"]
+)
